@@ -1,8 +1,13 @@
 {
   "dependencies": {
     "browser-sync": "^2.26.14",
+    "del": "^6.0.0",
     "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-html": "^3.3.0",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^3.0.0",
     "node-sass": "^5.0.0"
   },
   "name": "gulpfile-for-easy-projects",
@@ -11,7 +16,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp default",
+    "build": "gulp production",
     "start": "gulp watch"
   },
   "repository": {

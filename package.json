@@ -1,13 +1,16 @@
 {
   "dependencies": {
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
+    "node-sass": "^5.0.0"
   },
   "name": "gulpfile-for-easy-projects",
   "description": "An easy gulpfile, for Projects and doings",
   "version": "1.0.0",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp sass"
   },
   "repository": {
     "type": "git",

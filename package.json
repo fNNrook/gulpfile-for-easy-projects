@@ -1,5 +1,22 @@
 {
   "dependencies": {
     "gulp": "^4.0.2"
-  }
+  },
+  "name": "gulpfile-for-easy-projects",
+  "description": "An easy gulpfile, for Projects and doings",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fNNrook/gulpfile-for-easy-projects.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fNNrook/gulpfile-for-easy-projects/issues"
+  },
+  "homepage": "https://github.com/fNNrook/gulpfile-for-easy-projects#readme"
 }

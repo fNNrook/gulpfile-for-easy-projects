@@ -3,9 +3,11 @@ const browserSync = require('browser-sync');
 const del = require('del');
 const gulp = require('gulp');
 const htmlmin = require('gulp-htmlmin');
+const minify = require('gulp-minify');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps')
 const validator = require('gulp-html');
+
 
 gulp.task('sass', function() {
   return gulp.src('./src/**/*.scss')
@@ -48,10 +50,17 @@ gulp.task('clean', function(callback) {
     })
 })
 
-gulp.task('default', gulp.parallel('sass', 'html'))
+gulp.task('minify', function() {
+  gulp.src('./src/**/*.js')
+    .pipe(minify())
+    .pipe(gulp.dest('./dist'))
+})
+
+gulp.task('default', gulp.parallel('sass', 'html', 'minify'))
 
 gulp.task('watch', function() {
   gulp.watch('./src/**/*.scss', gulp.series('sass'))
+  gulp.watch('./src/**/*.js', gulp.series('minify'))
   gulp.watch('./src/**/*.html', gulp.series('html', function(done) {
     browserSync.reload()
     done()

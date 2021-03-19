@@ -4,6 +4,7 @@
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
+    "gulp-concat": "^2.6.1",
     "gulp-html": "^3.3.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-minify": "^3.1.0",

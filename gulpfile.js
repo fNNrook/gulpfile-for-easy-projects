@@ -1,23 +1,28 @@
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync');
+const concat = require('gulp-concat');
 const del = require('del');
 const gulp = require('gulp');
 const htmlmin = require('gulp-htmlmin');
+const minify = require('gulp-minify');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps')
 const validator = require('gulp-html');
 
-gulp.task('sass', function() {
+
+gulp.task('sass', function () {
   return gulp.src('./src/**/*.scss')
     .pipe(sourcemaps.init())
-      .pipe(sass().on('error', sass.logError))
-      .pipe(autoprefixer())
-      .pipe(sourcemaps.write())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./dist'))
-    .pipe(browserSync.stream({ match: '**/*.css' }));
+    .pipe(browserSync.stream({
+      match: '**/*.css'
+    }));
 })
 
-gulp.task('sass:production', function() {
+gulp.task('sass:production', function () {
   const options = {
     outputStyle: 'compressed'
   }
@@ -28,31 +33,38 @@ gulp.task('sass:production', function() {
     .pipe(gulp.dest('./dist/css'))
 })
 
-gulp.task('html', function() {
+gulp.task('html', function () {
   return gulp.src('./src/**/*.html')
     .pipe(validator())
     .pipe(gulp.dest('./dist'))
 })
 
-gulp.task('html:production', function() {
-  return gulp.src ('./src/**/*.html')
+gulp.task('html:production', function () {
+  return gulp.src('./src/**/*.html')
     .pipe(validator())
     .pipe(htmlmin())
     .pipe(gulp.dest('./dist'))
 })
 
-gulp.task('clean', function(callback) {
+gulp.task('clean', function (callback) {
   del('./dist')
-    .then(function() {
+    .then(function () {
       callback()
     })
 })
 
-gulp.task('default', gulp.parallel('sass', 'html'))
+gulp.task('javascript', function () {
+  return gulp.src('./src/**/*.js')
+    .pipe(concat('bundle.js'))
+    .pipe(gulp.dest('./dist'))
+})
 
-gulp.task('watch', function() {
+gulp.task('default', gulp.parallel('sass', 'html', 'javascript'))
+
+gulp.task('watch', gulp.series('default', function () {
   gulp.watch('./src/**/*.scss', gulp.series('sass'))
-  gulp.watch('./src/**/*.html', gulp.series('html', function(done) {
+  gulp.watch('./src/**/*.js', gulp.series('javascript'))
+  gulp.watch('./src/**/*.html', gulp.series('html', function (done) {
     browserSync.reload()
     done()
   }))
@@ -62,7 +74,7 @@ gulp.task('watch', function() {
       baseDir: 'dist'
     }
   })
-})
+}))
 
 gulp.task('production', gulp.series(
   'clean',

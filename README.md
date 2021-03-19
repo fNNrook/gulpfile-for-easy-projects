@@ -13,6 +13,6 @@ it contains:
 ## installation:
 `npm i` for install the dependencies
 
-##orders:
+## orders:
 Use `npm run build` to build your Production Folder
 Use `npm run start` to start your watch task 

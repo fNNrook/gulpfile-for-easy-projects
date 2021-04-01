@@ -46,6 +46,11 @@ gulp.task('html:production', function () {
     .pipe(gulp.dest('./dist'))
 })
 
+gulp.task('image', function () {
+  return gulp.src('./src/img/*.*')
+    .pipe(gulp.dest('./dist/img'))
+})
+
 gulp.task('clean', function (callback) {
   del('./dist')
     .then(function () {
@@ -59,11 +64,12 @@ gulp.task('javascript', function () {
     .pipe(gulp.dest('./dist'))
 })
 
-gulp.task('default', gulp.parallel('sass', 'html', 'javascript'))
+gulp.task('default', gulp.parallel('sass', 'html', 'javascript', 'image'))
 
 gulp.task('watch', gulp.series('default', function () {
   gulp.watch('./src/**/*.scss', gulp.series('sass'))
   gulp.watch('./src/**/*.js', gulp.series('javascript'))
+  gulp.watch('./src/**/*.*', gulp.series('image'))
   gulp.watch('./src/**/*.html', gulp.series('html', function (done) {
     browserSync.reload()
     done()

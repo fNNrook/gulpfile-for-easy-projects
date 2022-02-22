@@ -1,14 +1,11 @@
 {
   "dependencies": {
-    "browser-sync": "^2.26.14",
     "del": "^6.0.0",
-    "gulp-autoprefixer": "^7.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-html": "^3.3.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-minify": "^3.1.0",
     "gulp-sass": "^5.1.0",
-    "gulp-sourcemaps": "^3.0.0",
     "node-sass": "^7.0.1"
   },
   "name": "gulpfile-for-easy-projects",
@@ -31,7 +28,11 @@
   },
   "homepage": "https://github.com/fNNrook/gulpfile-for-easy-projects#readme",
   "devDependencies": {
+    "browser-sync": "^2.27.7",
+    "glob-parent": "^6.0.2",
     "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-sourcemaps": "^3.0.0",
     "sass": "^1.49.8"
   }
 }

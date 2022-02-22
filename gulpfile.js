@@ -5,12 +5,11 @@ const del = require('del');
 const gulp = require('gulp');
 const htmlmin = require('gulp-htmlmin');
 const minify = require('gulp-minify');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps')
 const validator = require('gulp-html');
 
-
-gulp.task('sass', function () {
+gulp.task('sass', async function () {
   return gulp.src('./src/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
@@ -22,7 +21,7 @@ gulp.task('sass', function () {
     }));
 })
 
-gulp.task('sass:production', function () {
+gulp.task('sass:production', async function () {
   const options = {
     outputStyle: 'compressed'
   }
@@ -33,37 +32,37 @@ gulp.task('sass:production', function () {
     .pipe(gulp.dest('./dist/css'))
 })
 
-gulp.task('html', function () {
+gulp.task('html', async function () {
   return gulp.src('./src/**/*.html')
     .pipe(validator())
     .pipe(gulp.dest('./dist'))
 })
 
-gulp.task('html:production', function () {
+gulp.task('html:production', async function () {
   return gulp.src('./src/**/*.html')
     .pipe(validator())
     .pipe(htmlmin())
     .pipe(gulp.dest('./dist'))
 })
 
-gulp.task('image', function () {
+gulp.task('image', async function () {
   return gulp.src('./src/img/*.*')
     .pipe(gulp.dest('./dist/img'))
 })
 
-gulp.task('image:production', function () {
+gulp.task('image:production', async function () {
   return gulp.src('./src/img/*.*')
     .pipe(gulp.dest('./dist/img'))
 })
 
-gulp.task('clean', function (callback) {
+gulp.task('clean', async function (callback) {
   del('./dist')
     .then(function () {
       callback()
     })
 })
 
-gulp.task('javascript', function () {
+gulp.task('javascript', async function () {
   return gulp.src('./src/js/*.js')
     .pipe(concat('bundle.js'))
     .pipe(gulp.dest('./dist'))
@@ -71,11 +70,11 @@ gulp.task('javascript', function () {
 
 gulp.task('default', gulp.parallel('sass', 'html', 'javascript', 'image'))
 
-gulp.task('watch', gulp.series('default', function () {
+gulp.task('watch', gulp.series('default', async function () {
   gulp.watch('./src/**/*.scss', gulp.series('sass'))
   gulp.watch('./src/**/*.js', gulp.series('javascript'))
   gulp.watch('./src/**/*.*', gulp.series('image'))
-  gulp.watch('./src/**/*.html', gulp.series('html', function (done) {
+  gulp.watch('./src/**/*.html', gulp.series('html', async function (done) {
     browserSync.reload()
     done()
   }))

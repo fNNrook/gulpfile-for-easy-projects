@@ -2,7 +2,6 @@
   "dependencies": {
     "browser-sync": "^2.26.14",
     "del": "^6.0.0",
-    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-html": "^3.3.0",
@@ -30,5 +29,9 @@
   "bugs": {
     "url": "https://github.com/fNNrook/gulpfile-for-easy-projects/issues"
   },
-  "homepage": "https://github.com/fNNrook/gulpfile-for-easy-projects#readme"
+  "homepage": "https://github.com/fNNrook/gulpfile-for-easy-projects#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "sass": "^1.49.8"
+  }
 }

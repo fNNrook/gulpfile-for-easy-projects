@@ -30,10 +30,12 @@
   "homepage": "https://github.com/fNNrook/gulpfile-for-easy-projects#readme",
   "devDependencies": {
     "browser-sync": "^2.27.7",
+    "engine.io": "^6.1.2",
     "glob-parent": "^6.0.2",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-sourcemaps": "^3.0.0",
+    "postcss": "^8.4.6",
     "sass": "^1.49.8"
   }
 }

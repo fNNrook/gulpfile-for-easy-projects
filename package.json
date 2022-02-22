@@ -6,7 +6,8 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-minify": "^3.1.0",
     "gulp-sass": "^5.1.0",
-    "node-sass": "^7.0.1"
+    "node-sass": "^7.0.1",
+    "nvm": "^0.0.4"
   },
   "name": "gulpfile-for-easy-projects",
   "description": "An easy gulpfile, for Projects and doings",
